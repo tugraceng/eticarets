@@ -1,0 +1,32 @@
+{
+  "name": "eticaret-platform",
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "prisma": {
+    "seed": "tsx database/prisma/seed.ts"
+  },
+  "scripts": {
+    "db:generate": "prisma generate --schema=database/prisma/schema.prisma",
+    "db:migrate": "prisma migrate dev --schema=database/prisma/schema.prisma",
+    "db:push": "prisma db push --schema=database/prisma/schema.prisma",
+    "db:seed": "prisma db seed --schema=database/prisma/schema.prisma",
+    "dev:backend": "npm run dev -w @platform/backend",
+    "dev:frontend": "npm run dev -w @platform/frontend",
+    "build": "npm run build -w @platform/backend && npm run build -w @platform/frontend",
+    "lint": "npm run lint -w @platform/backend -w @platform/frontend"
+  },
+  "devDependencies": {
+    "@prisma/client": "^6.6.0",
+    "@types/bcrypt": "^5.0.2",
+    "bcrypt": "^5.1.1",
+    "prisma": "^6.6.0",
+    "tsx": "^4.19.3",
+    "typescript": "^5.8.3"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
